@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import productData from "../../features/ProductData";
 import { addToCart } from '../../features/ActionsSlice';
+import { toast } from 'react-toastify';
 // import { Star, ChevronDown } from 'lucide-react'
 
 const SingleProduct = () => {
@@ -20,8 +21,8 @@ const SingleProduct = () => {
 
     const handleAddToCart = () => {
         dispatch(addToCart(selectedItem));
-        // toast.success("Item added to cart");
-        navigate('/cart');
+        toast.success("Item added to cart");
+        // navigate('/cart');
     };
 
     return (

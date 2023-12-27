@@ -3,10 +3,18 @@ import { Navbar, Button } from "keep-react";
 import { ShoppingCart } from "phosphor-react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getCartTotal } from "../../features/ActionsSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
     const { cart, totalPrice, totalQuantity } = useSelector((state) => state.action);
+
+    useEffect(() => {
+        dispatch(getCartTotal())
+    }, [cart])
+
 
     return (
         <Navbar className="bg-gray-200" fluid={true}>
